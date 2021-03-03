@@ -20,9 +20,9 @@ const createTask = (body, tasks) => {
 };
 
 router.post('/notes', (req, res) => {
-
+    console.log("database in post request", db)
     // creat task
-    const task = createTask(req.body, db);
+    const task = createTask(req.body, db.tasks);
 
     res.json(task);
 

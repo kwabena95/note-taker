@@ -1,5 +1,5 @@
 {
-  "taskArray": [
+  "tasks": [
     {
       "title": "Test Title",
       "text": "Test text"
@@ -7,6 +7,38 @@
     {
       "title": "hello",
       "text": "hello"
+    },
+    {
+      "title": "payment",
+      "text": "bill"
+    },
+    {
+      "title": "names",
+      "text": "jason"
+    },
+    {
+      "title": "job",
+      "text": "developer"
+    },
+    {
+      "title": "names",
+      "text": "charles"
+    },
+    {
+      "title": "Lunch",
+      "text": "Pizza"
+    },
+    {
+      "title": "Laundry",
+      "text": "do something"
+    },
+    {
+      "title": "people",
+      "text": "people\n"
+    },
+    {
+      "title": "Another name",
+      "text": "Alex"
     }
   ]
 }

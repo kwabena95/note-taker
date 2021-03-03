@@ -1,13 +1,9 @@
 const router = require('express').Router();
-const fs = require('fs');
+const { tasks } = require('../../db/db.json')
 
 
 router.get('/notes', (req, res) => {
-    fs.readFile('../../db/db.json', (err, data) => {
-        if (err) throw err;
-
-        return res.json(data);
-    });
+    res.json(tasks);
 });
 
 
