@@ -1,20 +1,30 @@
 const router = require('express').Router();
+const path = require('path');
 const fs = require('fs');
-const { createNewTask } = require('../../lib/tasks');
+const db = require('../../db/db.json');
+
+
+// write to db file
+const createTask = (body, tasks) => {
+
+    const task = body;
+    tasks.push(task);
+
+    // write to file
+    fs.writeFileSync(path.join(__dirname, '../../db/db.json'),
+        JSON.stringify({ tasks }, null, 2)
+    );
+
+    return task;
+
+};
 
 router.post('/notes', (req, res) => {
 
-    fs.writeFile('./db/bd.json', (err, data) => {
+    // creat task
+    const task = createTask(req.body, db);
 
-        if (err) throw err;
-
-        // create a new task
-        const task = createNewTask(req.body, data)
-
-        // return task
-        return res.json(task);
-
-    });
+    res.json(task);
 
 });
 

@@ -3,7 +3,7 @@ const express = require('express');
 // import routes
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
-// port
+// create port
 const PORT = process.env.PORT || 3001;
 // instantiate express
 const app = express();
@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // use apiRoutes
-
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
