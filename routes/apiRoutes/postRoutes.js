@@ -27,8 +27,7 @@ const createTask = (body, tasks) => {
 // filter by id
 const filterID = (id, tasks) => {
 
-    const results = tasks.filter(task => task.id === id)[0];
-    return results;
+    return tasks.filter(task => task.id !== id);
 };
 
 
@@ -42,15 +41,28 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
-    const results = filterID(req.params.id, db.tasks);
-    fs.readFile('../../db/db.json', 'utf8', (err, data) => {
-        if (err) throw err;
-        if (results === data.id) {
-            tasks.remove();
-        }
-    });
-    const task = createTask(req.body, db.tasks);
-    res.json(task)
+    // let found = db.tasks.find(item => {
+    //     return item.id === parseInt(req.params.id);
+    // });
+
+    // if (found) {
+    //     let targetIndex = db.tasks.indexOf(found);
+    //     db.tasks.splice(targetIndex, 1);
+    // }
+
+    // res.sendStatus(204);
+
+    const newTasks = filterID(req.params.id, db.tasks);
+
+    fs.writeFileSync(path.join(__dirname, '../../db/db.json'),
+        JSON.stringify({ "tasks": newTasks }, null, 2),
+        (err) => {
+            if (err) throw err;
+            res.sendStatus(204);
+        })
+
+
+
 });
 
 
