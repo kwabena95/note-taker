@@ -1,44 +1,19 @@
 {
   "tasks": [
     {
-      "title": "Test Title",
-      "text": "Test text"
+      "id": "6ad1769a-eb16-49d5-bfd7-dc5841dc6513",
+      "title": "Groceries",
+      "text": "bread\ncereal\nmilk\neggs"
     },
     {
-      "title": "hello",
-      "text": "hello"
+      "id": "8498d822-30df-4c88-a668-59f9d301e086",
+      "title": "Excerises",
+      "text": "running\njogging\npush-ups\nsit-ups\npull-ups\n"
     },
     {
-      "title": "payment",
-      "text": "bill"
-    },
-    {
-      "title": "names",
-      "text": "jason"
-    },
-    {
-      "title": "job",
-      "text": "developer"
-    },
-    {
-      "title": "names",
-      "text": "charles"
-    },
-    {
-      "title": "Lunch",
-      "text": "Pizza"
-    },
-    {
-      "title": "Laundry",
-      "text": "do something"
-    },
-    {
-      "title": "people",
-      "text": "people\n"
-    },
-    {
-      "title": "Another name",
-      "text": "Alex"
+      "id": "303e6336-bf4d-4f92-b78c-9c0f25e60f2d",
+      "title": "Tasks",
+      "text": "Do laundry"
     }
   ]
 }
