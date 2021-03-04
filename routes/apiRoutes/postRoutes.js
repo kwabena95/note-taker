@@ -2,7 +2,7 @@ const router = require('express').Router();
 const uuid = require('uuid');
 const path = require('path');
 const fs = require('fs');
-const db = require('../../db/db.json');
+let db = require('../../db/db.json');
 
 
 // write to db file
@@ -14,10 +14,10 @@ const createTask = (body, tasks) => {
     };
 
     tasks.push(task);
-
+    console.log('THIS IS AN ARRAY', tasks)
     // write to file
     fs.writeFileSync(path.join(__dirname, '../../db/db.json'),
-        JSON.stringify({ tasks }, null, 2)
+        JSON.stringify(tasks)
     );
 
     return task;
@@ -25,15 +25,15 @@ const createTask = (body, tasks) => {
 };
 
 // filter by id
-const filterID = (id, tasks) => {
+const filterID = (id) => {
 
-    return tasks.filter(task => task.id !== id);
+    return db.filter(task => task.id !== id);
 };
 
 
 router.post('/notes', (req, res) => {
 
-    const task = createTask(req.body, db.tasks);
+    const task = createTask(req.body, db);
     console.log('Incoming tasks---->', task)
 
     res.json(task);
@@ -41,28 +41,17 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
-    // let found = db.tasks.find(item => {
-    //     return item.id === parseInt(req.params.id);
-    // });
 
-    // if (found) {
-    //     let targetIndex = db.tasks.indexOf(found);
-    //     db.tasks.splice(targetIndex, 1);
-    // }
+    let newTasks = filterID(req.params.id, db);
 
-    // res.sendStatus(204);
-
-    const newTasks = filterID(req.params.id, db.tasks);
-
-    fs.writeFileSync(path.join(__dirname, '../../db/db.json'),
-        JSON.stringify({ "tasks": newTasks }, null, 2),
+    fs.writeFileSync("./db/db.json",
+        JSON.stringify(newTasks),
         (err) => {
             if (err) throw err;
-            res.sendStatus(204);
+            res.josn(db);
         })
 
-
-
+    db = newTasks
 });
 
 
