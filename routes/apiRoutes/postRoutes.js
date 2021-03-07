@@ -14,7 +14,7 @@ const createTask = (body, tasks) => {
     };
 
     tasks.push(task);
-    console.log('THIS IS AN ARRAY', tasks)
+
     // write to file
     fs.writeFileSync(path.join(__dirname, '../../db/db.json'),
         JSON.stringify(tasks)
@@ -34,7 +34,6 @@ const filterID = (id) => {
 router.post('/notes', (req, res) => {
 
     const task = createTask(req.body, db);
-    console.log('Incoming tasks---->', task)
 
     res.json(task);
 
